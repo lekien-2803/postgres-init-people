@@ -15,7 +15,7 @@ services:
       - my_network
 
   app:
-    build: .
+    image: mywebgo
     ports:
       - "8088:8080"
     depends_on:
