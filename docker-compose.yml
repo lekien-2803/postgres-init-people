@@ -15,23 +15,30 @@ services:
       - my_network
 
   app:
-    image: mywebgo
+    image: my-golang-app
     ports:
       - "8088:8080"
     depends_on:
       - postgres
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.myapp.rule=Host(`myapp.com`)"
+        - "traefik.http.services.myapp.loadbalancer.server.port=8088"
+      replicas: 1      
     networks:
-      - my_network
+      - my-overlay
 
   adminer:
     image: adminer:latest
     ports:
       - "8081:8080"
     networks:
-      - my_network
+      - my-overlay
 
 volumes:
   postgres_data:
 
 networks:
-  my_network:
+  my-overlay:
+    driver: overlay
