@@ -21,7 +21,7 @@ services:
     depends_on:
       - postgres
     environment:
-      POSTGRES_PASSWORD: abc123-      
+      POSTGRES_PASSWORD: abc123-   # Thêm biến môi trường POSTGRES_PASSWORD để go có thể bắt được mật khẩu của postgres
     deploy:
       labels:
         - "traefik.enable=true"
