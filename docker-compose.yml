@@ -30,7 +30,7 @@ services:
       replicas: 1      
     networks:
       - my-overlay
-      - my-shared-network
+      # - my-shared-network
 
   adminer:
     image: adminer:latest
