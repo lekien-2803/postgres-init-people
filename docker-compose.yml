@@ -44,3 +44,5 @@ volumes:
 networks:
   my-overlay:
     driver: overlay
+  my-shared-network:
+    external: true
