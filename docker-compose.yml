@@ -27,7 +27,10 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.myapp.rule=Host(`myapp.com`)"
         - "traefik.http.services.myapp.loadbalancer.server.port=8088"
-      replicas: 1      
+      # replicas: 1     
+      placement: # test01
+        constraints:
+          - node.hostname == manager01      
     networks:
       - my-overlay
       # - my-shared-network
