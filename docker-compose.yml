@@ -13,7 +13,6 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - my-overlay
-      - my-shared-network
 
   app:
     image: my-golang-app
@@ -31,7 +30,6 @@ services:
       replicas: 1      
     networks:
       - my-overlay
-      - my-shared-network
 
   adminer:
     image: adminer:latest
@@ -39,7 +37,6 @@ services:
       - "8081:8080"
     networks:
       - my-overlay
-      - my-shared-network
 
 volumes:
   postgres_data:
@@ -47,5 +44,5 @@ volumes:
 networks:
   my-overlay:
     driver: overlay
-  my-shared-network: # thêm network
-    external: true
+  # my-shared-network: # thêm network
+  #   external: true
