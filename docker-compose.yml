@@ -22,15 +22,16 @@ services:
       - postgres
     environment:
       POSTGRES_PASSWORD: abc123-   # Thêm biến môi trường POSTGRES_PASSWORD để go có thể bắt được mật khẩu của postgres
-    deploy:
-      labels:
-        - "traefik.enable=true"
-        - "traefik.http.routers.myapp.rule=Host(`myapp.com`)"
-        - "traefik.http.services.myapp.loadbalancer.server.port=8088"
-      # replicas: 1     
-      placement: # test01
-        constraints:
-          - node.hostname == manager01      
+    # deploy:
+    #   labels:
+    #     - "traefik.enable=true"
+    #     - "traefik.http.routers.myapp.rule=Host(`myapp.com`)"
+    #     - "traefik.http.services.myapp.loadbalancer.server.port=8088"
+    #   # replicas: 1     
+    #   placement: # test01
+    #     constraints:
+    #       - node.hostname == manager01      
+    #test02
     networks:
       - my-overlay
       # - my-shared-network
